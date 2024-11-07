@@ -1,0 +1,6 @@
+com\product\model\Product.class
+com\admin\dao\AdminDAO.class
+com\user\dao\UserDAO.class
+com\user\model\User.class
+com\admin\model\Admin.class
+com\product\dao\ProductDAO.class
