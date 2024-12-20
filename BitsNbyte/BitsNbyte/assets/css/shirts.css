@@ -1,0 +1,114 @@
+/* Reset some default styles */
+body, h1, h3, p, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Cart button styles */
+header button {
+    background: #e74c3c; /* Red background for cart button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+header button:hover {
+    background: #c0392b; /* Darker red on hover */
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+}
+
+/* Product list styles */
+.product-list {
+    list-style: none; /* Remove bullet points */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items */
+    gap: 20px; /* Space between items */
+}
+
+/* Product card styles */
+.product-card {
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    width: 200px; /* Fixed width for product cards */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.product-card img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
+}
+
+/* Product title styles */
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #35424a;
+}
+
+/* Product price styles */
+.product-card p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #666;
+}
+
+/* Button styles */
+.product-card button {
+    background: #35424a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.product-card button:hover {
+    background: #2c3e50; /* Darker shade on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .product-list {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .product-card {
+        width: 90%; /* Full width on small screens */
+    }
+}

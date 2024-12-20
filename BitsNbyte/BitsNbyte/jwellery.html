@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewelry - BitsNbyte</title>
+  <link rel="stylesheet" href="./assets/css/basic.css">
+</head>
+<body>
+
+  <header>
+    <h1>Jewelry Collection</h1>
+    <button onclick="viewCart()">View Cart (<span id="cart-count">0</span>)</button>
+  </header>
+
+  <main>
+    <ul class="product-list">
+      <li>
+        <div class="product-card">
+          <img src="./assets/images/category-5.jpg" alt="Jewelry 1">
+          <h3>Jewelry 1</h3>
+          <p>Price: ₹1499</p>
+          <button onclick="addToCart('Jewelry 1', 1499)">Add to Cart</button>
+        </div>
+      </li>
+      <li>
+        <div class="product-card">
+          <img src="./assets/images/jewelry-2.jpg" alt="Jewelry 2">
+          <h3>Jewelry 2</h3>
+          <p>Price: ₹1999</p>
+          <button onclick="addToCart('Jewelry 2', 1999)">Add to Cart</button>
+        </div>
+      </li>
+      <!-- Add more jewelry items similarly -->
+    </ul>
+  </main>
+
+  <script>
+    // Initialize cart from local storage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to local storage
+        alert(`${name} has been added to your cart!`);
+        updateCartCount();
+    }
+  
+    function updateCartCount() {
+        const cartCount = cart.length;
+        const cartCountElement = document.getElementById('cart-count');
+        if (cartCountElement) {
+            cartCountElement.innerText = cartCount;
+        }
+    }
+
+    function viewCart() {
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        let cartContents = "Your Cart:\n";
+        cart.forEach(item => {
+            cartContents += `${item.name} - ₹${item.price}\n`;
+        });
+        alert(cartContents);
+    }
+  
+    // Call this function on page load to update the cart count
+    window.onload = function() {
+        updateCartCount();
+    };
+  </script>
+
+</body>
+</html>

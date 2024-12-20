@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Page</title>
+  <link rel="stylesheet" href="./assets/css/blogstyle.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Blog Page</h1>
+  </header>
+
+  <main>
+    <section class="create-blog">
+      <h2>Create a New Blog Post</h2>
+      <form id="blog-form">
+        <input type="text" id="blog-title" placeholder="Blog Title" required>
+        <textarea id="blog-content" placeholder="Write your blog content here..." required></textarea>
+        <button type="submit">Publish Blog</button>
+      </form>
+    </section>
+
+    <section class="blog-posts">
+      <h2>Published Blogs</h2>
+      <div id="blog-list"></div>
+    </section>
+  </main>
+
+  <script>
+    // Function to load and display blog posts from local storage
+    function loadBlogs() {
+      const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+      const blogList = document.getElementById('blog-list');
+      blogList.innerHTML = ''; // Clear the list before displaying
+
+      blogs.forEach((blog, index) => {
+        const blogItem = document.createElement('div');
+        blogItem.classList.add('blog-item');
+        blogItem.innerHTML = `
+          <h3>${blog.title}</h3>
+          <p>${blog.content}</p>
+          <div class="comments">
+            <h4>Comments:</h4>
+            <div class="comment-list" id="comment-list-${index}"></div>
+            <textarea id="comment-input-${index}" placeholder="Leave a comment..."></textarea>
+            <button onclick="addComment(${index})">Comment</button>
+          </div>
+          <button onclick="deleteBlog(${index})" class="delete-button">Delete Blog</button>
+        `;
+        blogList.appendChild(blogItem);
+        loadComments(index); // Load comments for each blog post
+      });
+    }
+
+    // Function to handle the blog submission
+    document.getElementById('blog-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      const title = document.getElementById('blog-title').value;
+      const content = document.getElementById('blog-content').value;
+
+      const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+      blogs.push({ title, content });
+      localStorage.setItem('blogs', JSON.stringify(blogs));
+
+      document.getElementById('blog-title').value = ''; // Clear input
+      document.getElementById('blog-content').value = ''; // Clear input
+      loadBlogs(); // Reload blogs
+    });
+
+    // Function to add a comment to a blog post
+    function addComment(blogIndex) {
+      const commentInput = document.getElementById(`comment-input-${blogIndex}`);
+      const commentText = commentInput.value;
+
+      if (commentText.trim() === '') {
+        alert('Comment cannot be empty!');
+        return;
+      }
+
+      const comments = JSON.parse(localStorage.getItem(`comments-${blogIndex}`)) || [];
+      comments.push(commentText);
+      localStorage.setItem(`comments-${blogIndex}`, JSON.stringify(comments));
+
+      commentInput.value = ''; // Clear input
+      loadComments(blogIndex); // Reload comments
+    }
+
+    // Function to load comments for a specific blog post
+    function loadComments(blogIndex) {
+      const comments = JSON.parse(localStorage.getItem(`comments-${blogIndex}`)) || [];
+      const commentList = document.getElementById(`comment-list-${blogIndex}`);
+      commentList.innerHTML = ''; // Clear existing comments
+
+      comments.forEach(comment => {
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.textContent = comment; // Display the comment
+        commentList.appendChild(commentItem);
+      });
+    }
+
+    // Function to delete a blog post
+    function deleteBlog(blogIndex) {
+      const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+      blogs.splice(blogIndex, 1); // Remove the blog at the specified index
+      localStorage.setItem('blogs', JSON.stringify(blogs)); // Update local storage
+      loadBlogs(); // Reload blogs
+    }
+
+    // Load blogs on page load
+    window.onload = loadBlogs;
+  </script>
+
+</

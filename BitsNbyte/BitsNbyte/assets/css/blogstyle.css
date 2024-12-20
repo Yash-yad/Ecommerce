@@ -1,0 +1,139 @@
+/* Reset some default styles */
+body, h1, h2, h3, h4, p, textarea, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+}
+
+/* Create blog section */
+.create-blog {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-blog h2 {
+    margin-bottom: 15px;
+}
+
+.create-blog input, .create-blog textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styles */
+.create-blog button {
+    background: #35424a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-blog button:hover {
+    background: #2c3e50;
+}
+
+/* Blog posts section */
+.blog-posts {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.blog-item h3 {
+    margin-bottom: 10px;
+}
+
+/* Comments section */
+.comments {
+    margin-top: 15px;
+}
+
+.comment-list {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.comment-item {
+    margin-bottom: 5px;
+    padding: 5px;
+    background: #f9f9f9;
+    border-radius: 3px;
+}
+
+/* Textarea for comments */
+.comments textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Delete button styles */
+.delete-button {
+    background: #e74c3c; /* Red background for delete button */
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Space above the button */
+}
+
+.delete-button:hover {
+    background: #c0392b; /* Darker red on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .create-blog, .blog-posts {
+        padding: 15px;
+    }
+
+    .create-blog input, .create-blog textarea,
+    .comments textarea {
+        font-size: 14px;
+    }
+
+    .create-blog button, .delete-button {
+        padding: 8px 12px;
+    }
+}
