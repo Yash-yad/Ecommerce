@@ -12,3 +12,5 @@ Create a Maven Project
 Set all the necessary dependecies in pom.xml file
 then create packages in src/main/java to create jdbc connectivity and mysql database schema
 Create DAO files to access databases and perform various functions
+
+The new Added files of HTML,CSS and JS are added in folder bitsnbyte
